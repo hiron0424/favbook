@@ -9,7 +9,11 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
+    if params[:back]
+      @book = Book.new(book_params)
+    else
+      @book = Book.new
+    end
   end
 
   def edit
@@ -35,6 +39,11 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to books_path, notice: "オススメ本を削除しました"
+  end
+
+  def confirm
+    @book = Book.new(book_params)
+    render :new if @book.invalid?
   end
 end
 

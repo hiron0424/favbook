@@ -2,7 +2,7 @@
   <%= link_to "一覧", books_path, class: 'nav-link' %>
 </div>
 
-<%= form_with(model: @book, local: true) do |f| %>
+<%= form_with(model: @book, local: true, url: choose_new_or_edit) do |f| %>
   <% if @book.errors.any? %>
     <div id="error_explanation">
       <h2><%= @book.errors.count %>件のエラーがあります。</h2>
