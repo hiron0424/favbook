@@ -20,7 +20,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.new(book_params)
     if @book.save
       redirect_to books_path, notice: "オススメ本を登録しました！"
     else
@@ -42,7 +42,7 @@ class BooksController < ApplicationController
   end
 
   def confirm
-    @book = Book.new(book_params)
+    @book = current_user.books.new(book_params)
     render :new if @book.invalid?
   end
 end
