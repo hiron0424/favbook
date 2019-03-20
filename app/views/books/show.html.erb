@@ -1,5 +1,12 @@
 <h1>Book情報詳細</h1>
 <p>タイトル: <%= @book.name %></p>
 <p>内容: <%= @book.description %></p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @book.image.url %>
+</p>
 <br>
 <%= link_to "一覧に戻る", books_path, class: 'btn btn-primary' %>

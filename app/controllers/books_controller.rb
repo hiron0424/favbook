@@ -50,7 +50,7 @@ end
 private
 
 def book_params
-  params.require(:book).permit(:name, :description)
+  params.require(:book).permit(:name, :description, :image, :image_cache)
 end
 
 def set_book
