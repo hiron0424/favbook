@@ -15,21 +15,29 @@
   <% end %>
 
   <div class="form_controll">
-    <%= f.label :name %>
+    <%= f.label :name, value: 'タイトル' %>
+    <br>
     <%= f.text_field :name, id: 'book_name' %>
   </div>
 
+  <br>
+  <br>
   <div class="form_controll">
-    <%= f.label :description %>
+    <%= f.label :description, value: '内容ざっくり' %>
+    <br>
     <%= f.text_field :description, rows: 10, id: 'book_name' %>
   </div>
 
+  <br>
+  <br>
   <div class="field">
     <%= f.label :image %>
+    <br>
     <%= image_tag(@book.image.url) if @book.image && @book.image.url %>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </div>
 
+  <br>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>

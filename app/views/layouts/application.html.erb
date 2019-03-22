@@ -4,29 +4,43 @@
     <title>Favbook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="container">
-      <div class="app-title navbar navbar-expand-md navbar-light bg-light">Favbook</div>
+    <header class="header">
+      <div>
+        <h3>Favbook</h3>
+      </div>
+    </header>
 
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
 
-      <% if logged_in? %>
-        <%= link_to "Profile", user_path(current_user.id) %>
-        <%= link_to "Logout", session_path(current_user.id),method: :delete %>
-        <h2>ようこそ、<%= current_user.name %>さん！</h2>
-      <% else %>
-        <%= link_to "Sign up", new_user_path %>
-        <%= link_to "Login", new_session_path %>
-      <% end %>
+    <br>
+    <% if logged_in? %>
+      <%= link_to "マイページへ", user_path(current_user.id), class: 'btn btn-info' %>
+      <%= link_to "ログアウト", session_path(current_user.id),method: :delete, class: 'btn btn-warning' %>
+      <br>
+      <br>
+      <h3>ようこそ、<%= current_user.name %>さん！</h3>
+    <% else %>
+      <%= link_to "Sign up", new_user_path %>
+      <%= link_to "Login", new_session_path %>
+    <% end %>
 
-      <%= yield %>
-    </div>
+    <br>
+    <%= yield %>
+    <br>
+
+    <footer class="footer">
+      <div>
+        <p>©️2019Copyright favbook Corp.</p>
+      </div>
+    </footer>
   </body>
 </html>

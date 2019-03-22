@@ -1,12 +1,24 @@
-<h1>Book情報詳細</h1>
-<p>タイトル: <%= @book.name %></p>
-<p>内容: <%= @book.description %></p>
+<div class="container">
+  <h1>Book情報詳細</h1>
+  <br>
+  <br>
+  <p><strong>タイトル: <%= @book.name %></strong></p>
+  <p><strong>内容: <%= @book.description %></strong></p>
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @book.image.url %>
-</p>
-<br>
-<%= link_to "一覧に戻る", books_path, class: 'btn btn-primary' %>
+  <p>
+    <strong>サンプル画像</strong>
+    <%= image_tag @book.image.url %>
+  </p>
+  <br>
+  <% if @book.user_id == current_user.id %>
+    <%= link_to '編集画面へ', edit_book_path(@book.id), class: 'btn btn-success', data: {confirm: '本当に編集していいですか？'} %>
+    <%= link_to '削除する', book_path(@book.id), method: :delete, class: 'btn btn-danger', data: {confirm: '本当に削除していいですか？'} %>
+  <% else %>
+  <% end %>
+  <br>
+  <br>
+  <br>
+  <%= link_to "一覧に戻る", books_path, class: 'btn btn-info' %>
+</div>
